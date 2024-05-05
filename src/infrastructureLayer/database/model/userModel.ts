@@ -1,0 +1,22 @@
+import mongoose, { Document, Model, Schema } from "mongoose";
+import { User } from "../../../domainLayer/user";
+
+const userSchema: Schema = new Schema<User & Document>(
+  {
+    name: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+    mobile: { type: String, default: "" },
+    isBlocked: { type: Boolean, default: false },
+  },
+  {
+    timestamps: true,
+  }
+);
+
+const UserModel: Model<User & Document> = mongoose.model<User & Document>(
+  "User",
+  userSchema
+);
+
+export default UserModel;

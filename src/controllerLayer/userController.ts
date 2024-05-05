@@ -1,0 +1,62 @@
+import { Next, Req, Res } from "../infrastructureLayer/types/expressTypes";
+import { UserUseCase } from "../useCaseLayer/usecases/userUseCases";
+
+export class UserAdapter {
+  private readonly userusecase: UserUseCase;
+
+  constructor(userusecase: UserUseCase) {
+    this.userusecase = userusecase;
+  }
+
+  async createUser(req: Req, res: Res, next: Next) {
+    try {
+      const newUser = await this.userusecase.createUser(req.body);
+      newUser &&
+        res.status(newUser.status).json({
+          success: newUser.success,
+          message: newUser.message,
+        });
+    } catch (error) {
+      next(error);
+    }
+  }
+  async sendEmail(req: Req, res: Res, next: Next) {
+    try {
+      const user = await this.userusecase.verifyemail(req.body);
+      res.status(user.status).json({
+        success: user.success,
+        message: user.message,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async emailVerification(req: Req, res: Res, next: Next) {
+    try {
+      const user = await this.userusecase.emailVerification(req.body);
+      console.log(user)
+      user &&
+        res.status(user.status).json({
+          success: user.success,
+          data: user.data,
+        });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async loginUser(req: Req, res: Res, next: Next) {
+    try {
+      const user = await this.userusecase.loginUser(req.body);
+      user &&
+        res.status(user.status).json({
+          success: user.success,
+          data: user.data,
+          message: user.message,
+        });
+    } catch (error) {
+      next(error);
+    }
+  }
+}

@@ -26,7 +26,7 @@ export const emailVerification = async (
       return {
         status: 200,
         success: true,
-        message: "Succesfully logged In",
+        message: "Succesfully logged In  gg",
       };
     }
     throw ErrorResponse.badRequest("Wrong OTP");

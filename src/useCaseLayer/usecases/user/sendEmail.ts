@@ -3,7 +3,7 @@ import { IRequestValidator } from "../../interfaces/repositries/validRepository"
 import INodemailer from "../../interfaces/services/nodeMailer";
 import { IResponse } from "../../interfaces/services/response";
 
-export const verifyEmail = async (
+export const sendEmail = async (
   requestValidator:IRequestValidator,
   nodemailer:INodemailer,
   email:string,

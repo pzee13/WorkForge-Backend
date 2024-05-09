@@ -1,37 +1,36 @@
-
-import { IUserRepository } from "../interfaces/repositries/userRepository";
 import { IRequestValidator } from "../interfaces/repositries/validRepository";
 import IHashpassword from "../interfaces/services/hashPassword";
 import Ijwt from "../interfaces/services/jwt";
 import Nodemailer from "../interfaces/services/nodeMailer";
-import { createUser } from "./user/createUser";
-import { loginUser } from "./user/loginUser";
-import { sendEmail } from "./user/sendEmail";
+import { IProviderRepository } from "../interfaces/repositries/providerRepositry";
+import { createProvider } from "./provider/createProvider";
+import { loginProvider } from "./provider/loginProvider";
+import { sendEmail } from "./provider/sendEmailToProvider";
 import { emailVerification } from "./user/emailVerification";
 
 
-export class UserUseCase {
-    private readonly userRepository: IUserRepository;
+export class ProviderUseCase {
+    private readonly providerRepository: IProviderRepository;
     private readonly bcrypt: IHashpassword;
     private readonly jwt: Ijwt;
     private readonly nodemailer: Nodemailer;
     private readonly requestValidator: IRequestValidator;
   
     constructor(
-      userRepository: IUserRepository,
+      providerRepository: IProviderRepository,
       bcrypt: IHashpassword,
       jwt: Ijwt,
       nodemailer: Nodemailer,
       requestValidator: IRequestValidator
     ) {
-      this.userRepository = userRepository;
+      this.providerRepository = providerRepository;
       this.bcrypt = bcrypt;
       this.jwt = jwt;
       this.nodemailer = nodemailer;
       this.requestValidator = requestValidator;
     }
   
-    async createUser({
+    async createProvider({
       name,
       mobile,
       email,
@@ -42,9 +41,9 @@ export class UserUseCase {
       email: string;
       password: string;
     }) {
-      return createUser(
+      return createProvider(
         this.requestValidator,
-        this.userRepository,
+        this.providerRepository,
         this.bcrypt,
         name,
         mobile,
@@ -54,10 +53,10 @@ export class UserUseCase {
     }
 
     
-  async loginUser({ email, password }: { email: string; password: string }) {
-    return loginUser(
+  async loginProvider({ email, password }: { email: string; password: string }) {
+    return loginProvider(
       this.requestValidator,
-      this.userRepository,
+      this.providerRepository,
       this.bcrypt,
       this.jwt,
       email,
@@ -70,6 +69,7 @@ export class UserUseCase {
   }
 
   async emailVerification({otp,email}:{otp:string,email:string} ) {
+    console.log('email verify')
     return emailVerification(this.requestValidator,this.nodemailer,otp,email);
   }
 

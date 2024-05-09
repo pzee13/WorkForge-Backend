@@ -4,6 +4,8 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import morgan from "morgan";
 import userRouter from "../routes/userRoutes";
+import adminRouter from "../routes/adminRoutes"
+import providerRouter from "../routes/providerRoutes"
 import errorHandler from "../../useCaseLayer/handlers/errorHandler";
 
 dotenv.config();
@@ -18,5 +20,7 @@ app.use(
 app.use(morgan("dev"));
 
 app.use("/api/user", userRouter);
+app.use("/api/admin", adminRouter);
+app.use("/api/provider", providerRouter);
 
 app.use(errorHandler)

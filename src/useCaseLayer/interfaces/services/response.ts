@@ -1,5 +1,6 @@
 import { User } from "../../../domainLayer/user";
-
+import { Admin } from "../../../domainLayer/admin";
+import { Provider } from "../../../domainLayer/provider"
 
 
 
@@ -8,10 +9,13 @@ export interface StoreData {
   _id?: string;
   name: string;
   email: string;
-  mobile: string
+  
 }
 
-export interface IResponse<T = StoreData | string> {
+
+
+
+export interface IResponse<T = StoreData | string > {
   status: number;
   success: boolean;
   message?: string;
@@ -28,5 +32,15 @@ export interface UserResponse<T = User| User[]|string> {
 }
 
 
-
+export interface ILoginResponse<T = User | string | Admin | Provider> {
+  status: number;
+  success: boolean;
+  message?: string;
+  token?: string
+  data?:{
+    name:string;
+    role:string;
+    email:string;
+  } ;
+}
 

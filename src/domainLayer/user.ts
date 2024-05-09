@@ -5,5 +5,4 @@ export interface User{
     mobile? : string
     password: string;
     isBlocked?: boolean;
-    joinedAt?:Date
 }

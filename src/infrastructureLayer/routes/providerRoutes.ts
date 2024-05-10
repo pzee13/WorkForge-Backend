@@ -21,4 +21,8 @@ router.post("/register", (req: Request, res: Response, next: NextFunction) =>
   );
   
 
+  router.post("/logout", (req:Request,res:Response,next:NextFunction) => 
+    providerAdapter.logoutProvider(req,res,next)
+ )
+
   export default router;

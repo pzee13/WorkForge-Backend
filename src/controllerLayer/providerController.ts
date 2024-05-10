@@ -68,4 +68,17 @@ export class ProviderAdapter {
         next(error);
       }
     }
+
+
+    async logoutProvider(req: Req, res: Res, next:Next) {
+        try {
+          res.cookie("jwt", "", {
+            httpOnly: true,
+            expires: new Date(0),
+          });
+          res.status(200).json({ message: "Logged out successfully" });
+        } catch (err) {
+          next(err)
+        }
+      }
   }

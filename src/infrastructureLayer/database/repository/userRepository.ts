@@ -4,6 +4,8 @@ import { StoreData } from "../../../useCaseLayer/interfaces/services/response";
 import UserModel from "../model/userModel";
 import { createUser } from "./user/createUser";
 import { findUser } from './user/findUser'
+import { IResetPassword } from "../../../useCaseLayer/interfaces/services/response";
+import { resetPassword } from "./user/resetPassword";
 
 export class UserRepository implements IUserRepository {
     constructor(private readonly usersModel:typeof UserModel) {}
@@ -15,5 +17,9 @@ export class UserRepository implements IUserRepository {
    async findUser(email: string): Promise<User | null> {
     return findUser(email,this.usersModel);
 }
+
+async resetPassword(newPassword: IResetPassword): Promise<User> {
+    return resetPassword(newPassword, this.usersModel);
+  }
 
 }  

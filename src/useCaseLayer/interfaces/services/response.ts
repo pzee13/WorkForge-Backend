@@ -12,7 +12,10 @@ export interface StoreData {
   
 }
 
-
+export interface IResetPassword {
+  id:string
+  password : string;
+}
 
 
 export interface IResponse<T = StoreData | string > {

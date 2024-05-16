@@ -8,6 +8,10 @@ import { createUser } from "./user/createUser";
 import { loginUser } from "./user/loginUser";
 import { sendEmail } from "./user/sendEmail";
 import { emailVerification } from "./user/emailVerification";
+import { googleAuth } from "./user/googleAuth";
+import { forgotPassword } from "./user/forgotPassword";
+import { validateAccessToken } from "./user/validateAccessToken";
+import { resetPassword } from "./user/resetPassword";
 
 
 export class UserUseCase {
@@ -42,6 +46,7 @@ export class UserUseCase {
       email: string;
       password: string;
     }) {
+      console.log("creating user 2...")
       return createUser(
         this.requestValidator,
         this.userRepository,
@@ -65,13 +70,69 @@ export class UserUseCase {
     );
   }
 
+  async googleAuth({
+    name,
+    email,
+    password,
+  }: {
+    name: string;
+    email: string;
+    password: string;
+  }) {
+    return googleAuth(
+      this.requestValidator,
+      this.userRepository,
+      this.bcrypt,
+      this.jwt,
+      name,
+      email,
+      password
+    );
+  } 
+
+
   async sendEmails({email,name}:{email:string;name:string}) {
+    console.log("email sending .. 2")
     return sendEmail(this.requestValidator,this.nodemailer,email,name);
   }
 
   async emailVerification({otp,email}:{otp:string,email:string} ) {
+    console.log("email verifying ..2")
     return emailVerification(this.requestValidator,this.nodemailer,otp,email);
+  } 
+
+  async forgotPassword({email,name,token}: {email: string, name:string, token: string;}) {return forgotPassword(
+      this.requestValidator,
+      this.userRepository,
+      this.jwt,
+      this.nodemailer,
+      email,
+      name,
+      token
+
+    );
   }
+
+  async validateAccessToken({token}:{token:string}){
+    return validateAccessToken(
+      this.userRepository,
+      token
+    )
+  }
+
+  async resetPassword({id,password}:{id:string,password:string}){
+    return resetPassword(
+      this.userRepository,
+      this.requestValidator,
+      this.bcrypt,
+      id,
+      password
+    )
+  }
+
+
+
+
 
 
   

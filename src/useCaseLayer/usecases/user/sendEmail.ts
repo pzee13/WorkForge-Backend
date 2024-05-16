@@ -10,6 +10,7 @@ export const sendEmail = async (
   name:string
 ): Promise <IResponse> => {
   try {
+    console.log('email sending...')
     const validation =requestValidator.validateRequiredFields(
       {email,name},
       ["email","name"]

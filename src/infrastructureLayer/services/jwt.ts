@@ -19,6 +19,10 @@ class JwtPassword implements Ijwt {
         } 
         throw new Error('JWT_KEY is not defined');
     } 
+
+    
+
+
   }
   
   export default JwtPassword;

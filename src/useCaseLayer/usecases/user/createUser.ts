@@ -15,6 +15,7 @@ export const createUser = async (
   password: string
 ): Promise<IResponse> => {
   try {
+    console.log("creating user ...")
     const validation = requestValidator.validateRequiredFields(
       { name, mobile, email, password },
       ["name", "mobile", "email", "password"]

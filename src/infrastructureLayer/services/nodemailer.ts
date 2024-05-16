@@ -120,6 +120,39 @@ class Nodemailer implements INodemailer {
     }
   }
 
+  async sendLink(email: string, username: string, token: string): Promise<string> {
+    console.log("---------------------",email, username);
+    
+    const transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 587,
+        secure: false,
+        requireTLS: true,
+        auth: {
+            user: process.env.SMTP_MAIL,
+            pass: process.env.SMTP_PASS
+        }
+    });
+    const mailOptions = {
+        from: "aswinpc9@gmail.com",
+        to: email,
+        subject: "SetSpace Password Assistance",
+        html: `  <div style="max-width: 600px;">
+                    <p style="font-size: 16px;">Hello, ${username},</p>
+                    <p style="font-size: 14px;">We received a request to reset your password for your SetSpace account.</p>
+                    <p style="font-size: 14px;">Please click on the link below to reset your password:</p>
+                    <p style="font-size: 14px;"><a href="http://localhost:3000/user/resetPassword/${email}/${token}" style="color: #007bff; text-decoration: none;">Reset Password</a></p>
+                    <p style="font-size: 14px;">If you did not request this change, please ignore this email.</p>
+                    <p style="font-size: 14px;">Thank you,</p>
+                    <p style="font-size: 14px;">SetSpace</p>
+                </div>` 
+    }        
+
+    await transporter.sendMail(mailOptions);
+    return "success";
+    
+}
+
    
 
 }

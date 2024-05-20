@@ -38,7 +38,8 @@ export const loginProvider = async (
           return {
             status: 200,
             success: true,
-            data: token,
+            token: token,
+            data:provider,
             message: "Successfully logged out In",
           };
         }
@@ -47,6 +48,6 @@ export const loginProvider = async (
       throw ErrorResponse.notFound("Wrong password or email");
     } catch (err) {
       throw err;
-    }
+    } 
   };
   

@@ -13,6 +13,11 @@ export class ProviderAdapter {
         console.log('create')
         const newProvider = await this.providerusecase.createProvider(req.body);
         newProvider &&
+          res.cookie("providerjwt", newProvider.token, {
+            httpOnly: true,
+            sameSite: "strict", // Prevent CSRF attacks
+            maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+          });
           res.status(newProvider.status).json({
             success: newProvider.success,
             message: newProvider.message,
@@ -79,6 +84,21 @@ export class ProviderAdapter {
           res.status(200).json({ message: "Logged out successfully" });
         } catch (err) {
           next(err)
+        }
+      }
+
+
+      async updateProviderProfile(req:Req, res:Res,next:Next) {
+        try {
+          const provider= await this.providerusecase.updateProviderProfile(req.body);
+          provider && 
+          res.status(provider.status).json({
+            success:provider.success,
+            data:provider.data,
+            message:provider.message,
+          })
+        } catch (error) {
+          next(error)
         }
       }
   }

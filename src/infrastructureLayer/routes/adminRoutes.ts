@@ -8,5 +8,20 @@ router.post("/login",
     adminAdapter.loginAdmin(req,res,next)
 );
 
+router.get(
+  "/getSpaceRequests",
+  (req: Request, res: Response, next: NextFunction) =>
+    adminAdapter.getSpaceRequests(req, res, next)
+);
+
+router.patch(
+  "/updateSpaceStatus/:id/:providerId",
+  (req: Request, res: Response, next: NextFunction) =>
+    adminAdapter.updateSpaceStatus(req, res, next)
+);
+
+router.post("/logout", (req:Request,res:Response,next:NextFunction) => 
+  adminAdapter.logoutAdmin(req,res,next)
+)
 
 export default router

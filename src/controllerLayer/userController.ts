@@ -168,5 +168,44 @@ export class UserAdapter {
       next(err);
     }
   }
+
+
+  async getSpaces(req:Req,res:Res,next:Next) {
+    try {
+      console.log("getSpaces");
+      const { page = 1, perPage = 4, spaceType, state, search } = req.query;
+      
+      const spaces = await this.userusecase.getAcceptedSpaces(+page,
+        +perPage,
+        spaceType?.toString() || "", // Provide default value if specialisation is undefined
+        state?.toString() || "", // Provide default value if language is undefined
+        search?.toString() || "" // Provide default value if search is undefined);
+      )
+      spaces && 
+      res.status(spaces.status).json({
+        success:spaces.success,
+        data:spaces.data,
+        total:spaces.total
+      })
+    } catch (error) {
+      next(error)
+    }
+  }
+
+
+  async updateProfile(req: Req, res: Res, next: Next) {
+    try {
+      const user = await this.userusecase.updateProfile(req.body);
+      user &&
+      res.status(user.status).json({
+        success: user.success,
+        message: user.message,
+        user: user.data,
+      });
+    } catch (err) {
+      next(err);
+    }
+  }
+
   
 }

@@ -13,7 +13,7 @@ import ProviderModel from '../database/model/providerModel'
 declare global {
     namespace Express {
       interface Request{
-      user?:User | Admin |Provider;
+      user?:User | Admin | Provider;
       }
     }
   }
@@ -116,3 +116,5 @@ declare global {
       }
     
 }
+
+export default AuthMiddleware;

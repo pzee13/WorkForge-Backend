@@ -7,7 +7,6 @@ const providerSchema: Schema = new Schema<Provider & Document>({
     password: { type: String, required: true },
     mobile: { type: String, default: "" },
     isBlocked: { type: Boolean, default: false },
-    workSpaces: [{ type: Schema.Types.ObjectId }],    
   });
   
   

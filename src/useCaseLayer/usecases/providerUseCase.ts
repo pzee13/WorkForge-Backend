@@ -7,6 +7,7 @@ import { createProvider } from "./provider/createProvider";
 import { loginProvider } from "./provider/loginProvider";
 import { sendEmail } from "./provider/sendEmailToProvider";
 import { emailVerification } from "./user/emailVerification";
+import { updateProviderProfile } from "./provider/updateProviderProfile";
 
 
 export class ProviderUseCase {
@@ -73,6 +74,23 @@ export class ProviderUseCase {
     return emailVerification(this.requestValidator,this.nodemailer,otp,email);
   }
 
+  async updateProviderProfile({
+    _id,
+    name,
+    mobile
+  }: {
+  _id : string,
+  name : string,
+  mobile : string
+  }) {
+   return updateProviderProfile(
+     this.requestValidator,
+     this.providerRepository,
+     _id,
+     name,
+     mobile
+   );
+  }
 
   
 }  

@@ -49,4 +49,14 @@ router.post("/logout", (req:Request,res:Response,next:NextFunction) =>
       userAdapter.logoutUser(req,res,next)
    )
 
+
+router.get("/spaces",(req:Request,res:Response,next:NextFunction) => 
+  userAdapter.getSpaces(req,res,next)
+)
+
+router.patch("/updateProfile",
+ (req: Request, res: Response, next: NextFunction) =>
+  userAdapter.updateProfile(req, res, next)
+);
+
 export default router;

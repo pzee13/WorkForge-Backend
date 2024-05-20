@@ -1,6 +1,7 @@
 import { User } from "../../../domainLayer/user";
 import { Admin } from "../../../domainLayer/admin";
 import { Provider } from "../../../domainLayer/provider"
+import { WorkSpace } from "../../../domainLayer/workSpace";
 
 
 
@@ -11,6 +12,8 @@ export interface StoreData {
   email: string;
   
 }
+
+
 
 export interface IResetPassword {
   id:string
@@ -47,3 +50,28 @@ export interface ILoginResponse<T = User | string | Admin | Provider> {
   } ;
 }
 
+
+export interface SpaceResponse<T = WorkSpace| WorkSpace[]|string> {
+  status: number;
+  success: boolean;
+  message?: string;
+  data?: T;
+  total?: number;
+}
+
+
+export interface IUserResponse<T = User| User[]|string> {
+  status: number;
+  success: boolean;
+  message?: string;
+  data?: T;
+  token? : string
+}
+
+export interface IProviderResponse<T = Provider| Provider[]|string> {
+  status: number;
+  success: boolean;
+  message?: string;
+  data?: T;
+  token? : string
+}

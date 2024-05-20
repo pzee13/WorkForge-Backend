@@ -12,6 +12,8 @@ import { googleAuth } from "./user/googleAuth";
 import { forgotPassword } from "./user/forgotPassword";
 import { validateAccessToken } from "./user/validateAccessToken";
 import { resetPassword } from "./user/resetPassword";
+import { getSpaces } from "./user/getSpaces";
+import { updateProfile }  from "./user/updateUserProfile"
 
 
 export class UserUseCase {
@@ -132,6 +134,29 @@ export class UserUseCase {
 
 
 
+  async getAcceptedSpaces(page: number, perPage: number, spaceType: string, state: string, search: string){
+    return getSpaces(page, perPage, spaceType, state, search);
+  }
+
+
+  
+  async updateProfile({
+    _id,
+    name,
+    mobile
+  }: {
+  _id : string,
+  name : string,
+  mobile : string
+  }) {
+   return updateProfile(
+     this.requestValidator,
+     this.userRepository,
+     _id,
+     name,
+     mobile
+   );
+  }
 
 
 

@@ -1,5 +1,8 @@
 import express, { NextFunction, Request, Response } from "express";
 import { providerAdapter } from "./injections/providerInjection";
+import { spaceAdapter } from "./injections/spaceInjection";
+import AuthMiddleware from "../middleware/authMiddleware";
+
 
 const router = express.Router();
 
@@ -19,6 +22,20 @@ router.post("/register", (req: Request, res: Response, next: NextFunction) =>
   router.post("/verifyEmail", (req: Request, res: Response, next: NextFunction) =>
     providerAdapter.emailVerification(req, res, next)
   );
+
+  router.post(
+    "/createSpace",
+    
+    (req: Request, res: Response, next: NextFunction) =>
+      spaceAdapter.createSpace(req, res, next)
+  );
+
+
+  router.patch(
+    "/updateProviderProfile",
+    (req:Request, res:Response,next:NextFunction) =>
+      providerAdapter.updateProviderProfile(req,res,next)
+  )
   
 
   router.post("/logout", (req:Request,res:Response,next:NextFunction) => 

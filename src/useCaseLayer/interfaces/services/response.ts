@@ -35,7 +35,7 @@ export interface UserResponse<T = User| User[]|string> {
   message?: string;
   data?: T;
   token? : string
-}
+} 
 
 
 export interface ILoginResponse<T = User | string | Admin | Provider> {

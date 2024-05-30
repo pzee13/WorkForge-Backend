@@ -8,7 +8,7 @@ const SpaceSchema:Schema =new Schema<WorkSpace & Document>(
       spaceType:{ type: String, required: true },
       state:{ type: String, required: true },
       district:{ type: String, required: true },
-      city:{ type: String, required: true },
+      country:{ type: String, required: true },
       areaName:{ type: String, required: true },
       buildingName:{ type: String, required: true },
       description:{ type: String, required: true },

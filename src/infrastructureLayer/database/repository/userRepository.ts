@@ -7,6 +7,7 @@ import { findUser } from './user/findUser'
 import { IResetPassword } from "../../../useCaseLayer/interfaces/services/response";
 import { resetPassword } from "./user/resetPassword";
 import { updateProfile } from "./user/updateProfile";
+import { blockUser } from "./user/blockUser"
 
 export class UserRepository implements IUserRepository {
     constructor(private readonly usersModel:typeof UserModel) {}
@@ -25,6 +26,10 @@ async resetPassword(newPassword: IResetPassword): Promise<User> {
 
   async updateProfile(data: Record<string, string>): Promise<User | never>{
     return updateProfile(data,this.usersModel)
+  }
+
+  async blockUser(_id: string): Promise<string | null> {
+    return blockUser(_id,this.usersModel)
   }
 
 }  

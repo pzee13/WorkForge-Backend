@@ -9,7 +9,6 @@ export const updateProviderProfile = async (
        
         const provider = await providerModels.findOne({ _id: data._id}).select("-password");
         if (provider) {
-            // Assuming isStatus is a property on the user model
             provider.name = data.name
             provider.mobile = data.mobile
             await provider.save();

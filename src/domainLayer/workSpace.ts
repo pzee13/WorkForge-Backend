@@ -5,7 +5,7 @@ export interface WorkSpace{
     spaceType:string;
     state:string;
     district:string;
-    city:string;
+    country:string;
     areaName:string;
     buildingName:string;
     description:string;

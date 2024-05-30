@@ -14,11 +14,25 @@ router.get(
     adminAdapter.getSpaceRequests(req, res, next)
 );
 
+router.get(
+  "/getUsers",
+  (req: Request, res: Response, next: NextFunction) =>
+     adminAdapter.getUsers(req,res,next)
+)
+
 router.patch(
   "/updateSpaceStatus/:id/:providerId",
   (req: Request, res: Response, next: NextFunction) =>
     adminAdapter.updateSpaceStatus(req, res, next)
 );
+
+router.patch(
+  "/users/unblock-block",
+  // AuthMiddleware.protectAdmin,
+  (req: Request, res: Response, next: NextFunction) =>
+    adminAdapter.blockUnblockUser(req, res, next)
+);
+
 
 router.post("/logout", (req:Request,res:Response,next:NextFunction) => 
   adminAdapter.logoutAdmin(req,res,next)

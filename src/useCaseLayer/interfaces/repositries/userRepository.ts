@@ -6,4 +6,5 @@ export interface IUserRepository {
     findUser(email: string): Promise<User | null>;
     resetPassword(newPassword:IResetPassword): Promise<User>;
     updateProfile(data:Record<string,string>): Promise<User>;
+    blockUser(_id:string):Promise<string | null>;
 }

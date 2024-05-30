@@ -44,6 +44,40 @@ export class AdminAdapter {
   }
 
 
+  async blockUnblockUser(req: Req, res: Res, next: Next) {
+    try {
+      const _id = req.query.id as string;
+      const user = await this.adminusecase.blockUnblockUser(_id);
+
+      user &&
+        res.status(user.status).json({
+          success: user.success,
+          data: user.data,
+          message: user.message,
+        });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+
+  async getUsers(req: Req, res: Res, next: Next) {
+    try {
+      console.log("get user datas");
+      const users = await this.adminusecase.getUsers();
+      users &&
+        res.status(users.status).json({
+          success: users.success,
+          data: users.data,
+        });
+        console.log(users);
+    } catch (err) {
+      next(err);
+    }
+  }
+
+
+
   async updateSpaceStatus(req: Req, res: Res, next: Next) {
     try {
       const { id, providerId } = req.params // Extracting id, providerId, isAccepted from the request body

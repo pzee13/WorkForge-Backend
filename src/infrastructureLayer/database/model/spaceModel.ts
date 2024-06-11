@@ -1,9 +1,9 @@
 import mongoose, { Document, Model, Schema } from "mongoose";
-import { WorkSpace } from "../../../domainLayer/workSpace";
+import { WorkSpace } from "../../../domain/workSpace";
 
 const SpaceSchema:Schema =new Schema<WorkSpace & Document>(
     {
-      spaceName: { type: String, required: true, unique:true},
+      spaceName: { type: String, required: true,},
       providerId: { type: String, required: true },
       spaceType:{ type: String, required: true },
       state:{ type: String, required: true },

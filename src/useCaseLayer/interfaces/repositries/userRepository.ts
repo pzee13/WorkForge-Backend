@@ -1,4 +1,4 @@
-import { User } from "../../../domainLayer/user";
+import { User } from "../../../domain/user";
 import { IResetPassword } from "../services/response";
 
 export interface IUserRepository {
@@ -7,4 +7,5 @@ export interface IUserRepository {
     resetPassword(newPassword:IResetPassword): Promise<User>;
     updateProfile(data:Record<string,string>): Promise<User>;
     blockUser(_id:string):Promise<string | null>;
+
 }

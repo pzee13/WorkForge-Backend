@@ -1,5 +1,5 @@
 import mongoose, { Schema, Model, Document } from 'mongoose';
-import { Provider } from "../../../domainLayer/provider";
+import { Provider } from "../../../domain/provider";
 
 const providerSchema: Schema = new Schema<Provider & Document>({
     name: { type: String, required: true },
@@ -7,6 +7,7 @@ const providerSchema: Schema = new Schema<Provider & Document>({
     password: { type: String, required: true },
     mobile: { type: String, default: "" },
     isBlocked: { type: Boolean, default: false },
+    wallet: { type: Number, default:0 },
   });
   
   

@@ -1,7 +1,9 @@
-import { User } from "../../../domainLayer/user";
-import { Admin } from "../../../domainLayer/admin";
-import { Provider } from "../../../domainLayer/provider"
-import { WorkSpace } from "../../../domainLayer/workSpace";
+import { User } from "../../../domain/user";
+import { Admin } from "../../../domain/admin";
+import { Provider } from "../../../domain/provider"
+import { WorkSpace } from "../../../domain/workSpace";
+import { SpaceType } from "../../../domain/spaceType";
+import { Booking } from "../../../domain/booking";
 
 
 
@@ -57,6 +59,20 @@ export interface SpaceResponse<T = WorkSpace| WorkSpace[]|string> {
   message?: string;
   data?: T;
   total?: number;
+}
+
+export interface SpaceTypeResponse<T = SpaceType| SpaceType[]|string |undefined> {
+  status: number;
+  success: boolean;
+  message?: string;
+  data?: T;
+}
+
+export interface BookingResponse<T = Booking| Booking[]|string> {
+  status: number;
+  success: boolean;
+  message?: string;
+  data?: T;
 }
 
 

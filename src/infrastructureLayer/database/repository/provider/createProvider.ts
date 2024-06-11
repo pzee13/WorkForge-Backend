@@ -1,4 +1,4 @@
-import { Provider } from "../../../../domainLayer/provider";
+import { Provider } from "../../../../domain/provider";
 import ProviderModel from "../../../database/model/providerModel"
 
 export const createProvider = async (

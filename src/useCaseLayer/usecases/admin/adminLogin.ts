@@ -1,4 +1,4 @@
-import { Admin } from "../../../domainLayer/admin";
+import { Admin } from "../../../domain/admin";
 import ErrorResponse from "../../handlers/errorResponse";
 import { IAdminRepository } from "../../interfaces/repositries/adminRepository";
 import { IRequestValidator } from "../../interfaces/repositries/validRepository";

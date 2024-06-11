@@ -1,4 +1,4 @@
-import { User } from "../../../domainLayer/user";
+import { User } from "../../../domain/user";
 import ErrorResponse from "../../handlers/errorResponse";
 import { IUserRepository } from "../../interfaces/repositries/userRepository";
 import { IRequestValidator } from "../../interfaces/repositries/validRepository";

@@ -28,6 +28,7 @@ export const createSpace = async(
     longitude:number,
 ): Promise<string> => {
     try{
+      console.log("11",spaceType,spaceName)
         const validation = requestValidator.validateRequiredFields(
             {
                 providerId,
@@ -102,10 +103,16 @@ export const createSpace = async(
             longitude,
           }
 
+          console.log("22",newSpace.spaceType)
 
-
-          const createNewSpace = await spaceRepository.createSpace(newSpace)
-          return createNewSpace
+          const newType = await spaceRepository.existingSpaceType(spaceType);
+          console.log("loggin",newType)
+          if(newType){
+            const createNewSpace = await spaceRepository.createSpace(newSpace)
+            return createNewSpace
+          }else{
+            throw ErrorResponse.badRequest("We do not accept these space types"); 
+          }
 
     }catch(err){
         throw err;

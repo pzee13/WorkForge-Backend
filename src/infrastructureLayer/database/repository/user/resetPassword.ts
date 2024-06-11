@@ -1,4 +1,4 @@
-import { User } from "../../../../domainLayer/user";
+import { User } from "../../../../domain/user";
 import { IResetPassword } from "../../../../useCaseLayer/interfaces/services/response";
 import UserModel from "../../model/userModel";
 

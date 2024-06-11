@@ -1,4 +1,4 @@
-import { Provider } from "../../../domainLayer/provider";
+import { Provider } from "../../../domain/provider";
 import IHashpassword from "../../interfaces/services/hashPassword";
 import Ijwt from "../../interfaces/services/jwt";
 import { IResponse } from "../../interfaces/services/response";

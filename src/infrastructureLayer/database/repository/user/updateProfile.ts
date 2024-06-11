@@ -1,4 +1,4 @@
-import { User } from "../../../../domainLayer/user";
+import { User } from "../../../../domain/user";
 import UserModel from "../../model/userModel";
 
 

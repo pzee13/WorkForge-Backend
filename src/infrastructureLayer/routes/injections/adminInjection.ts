@@ -1,4 +1,4 @@
-import { AdminAdapter } from "../../../controllerLayer/adminController";
+import { AdminAdapter } from "../../../controller/adminController";
 import { AdminUseCase } from "../../../useCaseLayer/usecases/adminUseCase";
 import AdminModel from "../../database/model/adminModel";
 import { AdminRepository } from "../../database/repository/adminRepository";
@@ -12,9 +12,10 @@ import { SpaceRepositries } from "../../database/repository/spaceRepository";
 import { ProviderRepository } from "../../database/repository/providerRepository";
 import { UserRepository } from "../../database/repository/userRepository";
 import ProviderModel from "../../database/model/providerModel";
+import SpaceTypeModel from "../../database/model/spaceTypeModel";
 
 const adminRepository = new AdminRepository(AdminModel);
-const spaceRepository = new SpaceRepositries(SpaceModel)
+const spaceRepository = new SpaceRepositries(SpaceModel,SpaceTypeModel)
 const providerRepository = new ProviderRepository(ProviderModel)
 const userRepository = new UserRepository(UserModel)
 

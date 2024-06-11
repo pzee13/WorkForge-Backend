@@ -1,4 +1,4 @@
-import { UserAdapter } from "../../../controllerLayer/userController";
+import { UserAdapter } from "../../../controller/userController";
 import { UserUseCase } from "../../../useCaseLayer/usecases/userUseCases";
 import UserModel from "../../database/model/userModel";
 import { UserRepository } from "../../database/repository/userRepository";

@@ -1,4 +1,4 @@
-import { Provider } from "../../../domainLayer/provider";
+import { Provider } from "../../../domain/provider";
 import { StoreData } from "../services/response";
 
 export interface IProviderRepository {
@@ -6,5 +6,7 @@ export interface IProviderRepository {
     findProvider(email:string):Promise<Provider|null>;
     findProviderById(id: string): Promise<Provider | null>;
     updateProviderProfile(data:Record<string,string>): Promise<Provider>;
-  }  
+    profitToWallet(providerId: string,providerAmount:number): Promise<string | null>;
+    blockProvider(_id:string):Promise<string | null>;
+  }
 

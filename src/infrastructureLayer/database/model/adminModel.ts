@@ -1,5 +1,5 @@
 import mongoose,{Document,Model,Schema} from "mongoose";
-import { Admin } from '../../../domainLayer/admin'
+import { Admin } from '../../../domain/admin'
 
 
 const adminSchema: Schema = new Schema<Admin & Document>(
@@ -7,6 +7,7 @@ const adminSchema: Schema = new Schema<Admin & Document>(
       name: { type: String, required: true },
       email: { type: String, required: true, unique: true },
       password: { type: String, required: true },
+      wallet: { type: Number, default:0 },
     },
     {
       timestamps:true,

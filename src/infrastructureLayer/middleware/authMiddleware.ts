@@ -1,9 +1,9 @@
 import jwt from 'jsonwebtoken';
 import { Request,Response,NextFunction } from 'express';
 import { UserRepository } from '../database/repository/userRepository';
-import { User } from '../../domainLayer/user';
-import { Admin } from '../../domainLayer/admin'
-import { Provider } from '../../domainLayer/provider';
+import { User } from '../../domain/user';
+import { Admin } from '../../domain/admin'
+import { Provider } from '../../domain/provider';
 import { AdminRepository } from '../database/repository/adminRepository';
 import { ProviderRepository } from '../database/repository/providerRepository';
 import UserModel from '../database/model/userModel';

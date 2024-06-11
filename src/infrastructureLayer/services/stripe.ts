@@ -14,7 +14,7 @@ class StripeService implements IStripe {
     async  createPaymentIntent(
       amount:number,
       bookingId:string,
-      workerId:string
+      providerId:string
     ):Promise<IResponse> {
       console.log("here");
       
@@ -25,7 +25,7 @@ class StripeService implements IStripe {
             price_data: {
               currency: 'inr',
               product_data: {
-                name: 'Service Payment is',
+                name: 'Booking Payment is',
               },
               unit_amount: amount *100,
             },
@@ -33,12 +33,12 @@ class StripeService implements IStripe {
           },
         ],
         mode: 'payment',
-        success_url: 'http://localhost:4000/profile/Bookings',
-        cancel_url: 'http://localhost:4000/profile/Bookings',
+        success_url: 'http://localhost:3000/home/',
+        cancel_url: 'http://localhost:3000/home/',
         metadata: { 
           bookingId,
           amount,
-          workerId
+          providerId
         },
       });
         return {

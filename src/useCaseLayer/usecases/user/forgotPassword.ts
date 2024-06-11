@@ -31,10 +31,12 @@ requestValidator: IRequestValidator, userRepository: IUserRepository, jwt: Ijwt,
       const token = jwt.createJWT(user._id as string, user.email, "resetPassword", user.name)
 
       console.log(token);
+
+      console.log(" token send ")
       
       
       const sendLink = await nodemailer.sendLink(user.email,user.name,token);
-       
+        
       return {
         status:200,
         success:true,

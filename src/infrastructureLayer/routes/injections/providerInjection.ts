@@ -1,6 +1,6 @@
 import ProviderModel from '../../database/model/providerModel'
 import { ProviderRepository } from '../../database/repository/providerRepository';
-import { ProviderAdapter } from '../../../controllerLayer/providerController';
+import { ProviderAdapter } from '../../../controller/providerController';
 import { ProviderUseCase } from '../../../useCaseLayer/usecases/providerUseCase';
 import Encrypt from "../../services/bcrypt";
 import JwtPassword from "../../services/jwt";

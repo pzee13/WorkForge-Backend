@@ -1,6 +1,8 @@
 import express, { NextFunction, Request, Response } from "express";
 import { userAdapter } from "./injections/userInjection";
-
+import { bookingAdapter } from "./injections/bookingInjection";
+import AuthMiddleware from "../middleware/authMiddleware";
+import { spaceAdapter } from "./injections/spaceInjection";
 
 const router = express.Router();
 
@@ -49,14 +51,47 @@ router.post("/logout", (req:Request,res:Response,next:NextFunction) =>
       userAdapter.logoutUser(req,res,next)
    )
 
+   router.get(
+    "/getSpaceTypes",
 
-router.get("/spaces",(req:Request,res:Response,next:NextFunction) => 
+    (req: Request, res: Response, next: NextFunction) =>
+      spaceAdapter.getSpaceType(req, res, next)
+  )
+
+
+router.get("/spaces",
+
+(req:Request,res:Response,next:NextFunction) => 
   userAdapter.getSpaces(req,res,next)
 )
 
 router.patch("/updateProfile",
+AuthMiddleware.protectUser,
  (req: Request, res: Response, next: NextFunction) =>
   userAdapter.updateProfile(req, res, next)
 );
+
+
+router.post(
+  "/bookSpace",
+  AuthMiddleware.protectUser,
+  (req: Request, res: Response, next: NextFunction) =>
+    bookingAdapter.bookSpace(req, res, next)
+);
+
+router.post(
+  "/preBookings",
+  AuthMiddleware.protectUser,
+  (req: Request, res: Response, next: NextFunction) =>
+    bookingAdapter.getPreBookings(req, res, next)
+);
+
+router.post("/payment", (req: Request, res: Response, next: NextFunction) => {
+  bookingAdapter.payment(req, res, next);
+});
+
+router.post("/webhook", (req: Request, res: Response, next: NextFunction) => {
+  bookingAdapter.webhook(req, res, next);
+});
 
 export default router;

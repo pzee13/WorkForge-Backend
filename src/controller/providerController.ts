@@ -97,8 +97,41 @@ export class ProviderAdapter {
             data:provider.data,
             message:provider.message,
           })
-        } catch (error) {
+        } catch (error) { 
           next(error)
+        }
+      }
+
+
+      async getProviders(req: Req, res: Res, next: Next) {
+        try {
+          console.log("get provider datas");
+          const providers = await this.providerusecase.getProviders();
+          providers &&
+            res.status(providers.status).json({
+              success: providers.success,
+              data: providers.data,
+            });
+            console.log(providers);
+        } catch (err) {
+          next(err);
+        }
+      }
+
+
+      async blockProvider(req: Req, res: Res, next: Next) {
+        try {
+          const _id = req.query.id as string;
+          const user = await this.providerusecase.blockProvider(_id);
+    
+          user &&
+            res.status(user.status).json({
+              success: user.success,
+              data: user.data,
+              message: user.message,
+            });
+        } catch (error) {
+          next(error);
         }
       }
   }

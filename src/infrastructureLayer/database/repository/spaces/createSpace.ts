@@ -1,4 +1,4 @@
-import { WorkSpace } from "../../../../domainLayer/workSpace";
+import { WorkSpace } from "../../../../domain/workSpace";
 import SpaceModel from "../../model/spaceModel"
 
 export const createSpace = async(

@@ -8,6 +8,8 @@ import { loginProvider } from "./provider/loginProvider";
 import { sendEmail } from "./provider/sendEmailToProvider";
 import { emailVerification } from "./user/emailVerification";
 import { updateProviderProfile } from "./provider/updateProviderProfile";
+import { getProviders } from './provider/getProviders'
+import { blockProvider } from './provider/blockProvider'
 
 
 export class ProviderUseCase {
@@ -91,6 +93,20 @@ export class ProviderUseCase {
      mobile
    );
   }
+
+  async getProviders(){
+    return getProviders(
+    );
+  }
+
+  async blockProvider(_id:string){
+    return blockProvider(
+      this.requestValidator,
+      this.providerRepository,
+      _id
+    )
+  }
+
 
   
 }  

@@ -4,6 +4,7 @@ import { spaceAdapter } from "./injections/spaceInjection";
 import AuthMiddleware from "../middleware/authMiddleware";
 
 
+
 const router = express.Router();
 
 
@@ -25,7 +26,7 @@ router.post("/register", (req: Request, res: Response, next: NextFunction) =>
 
   router.post(
     "/createSpace",
-    
+   
     (req: Request, res: Response, next: NextFunction) =>
       spaceAdapter.createSpace(req, res, next)
   );
@@ -33,6 +34,7 @@ router.post("/register", (req: Request, res: Response, next: NextFunction) =>
 
   router.patch(
     "/updateProviderProfile",
+  
     (req:Request, res:Response,next:NextFunction) =>
       providerAdapter.updateProviderProfile(req,res,next)
   )
@@ -41,5 +43,13 @@ router.post("/register", (req: Request, res: Response, next: NextFunction) =>
   router.post("/logout", (req:Request,res:Response,next:NextFunction) => 
     providerAdapter.logoutProvider(req,res,next)
  )
+
+
+ router.get(
+  "/getProviders",
+  (req: Request, res: Response, next: NextFunction) =>
+     providerAdapter.getProviders(req,res,next)
+)
+
 
   export default router;

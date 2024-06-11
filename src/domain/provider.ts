@@ -8,6 +8,6 @@ export interface Provider {
     mobile? : string
     password: string;
     isBlocked?: boolean;
-    
+    wallet?:number;
 
 }

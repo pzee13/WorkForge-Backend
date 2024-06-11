@@ -2,6 +2,9 @@ import { IRequestValidator } from "../interfaces/repositries/validRepository";
 import { SpaceRepository } from "../interfaces/repositries/spaceRepository";
 import { createSpace } from "./space/createSpace";
 import { getSpace } from "./space/getSpace";
+import { createSpaceType } from "./space/createSpaceType";
+import { getSpaceType } from "./space/getSpaceTypes";
+import { editSpaceType } from "./space/editSpaceType"
 
 export class SpaceUseCase{
     private readonly spaceRepository:SpaceRepository;
@@ -87,5 +90,55 @@ export class SpaceUseCase{
 
     async getSpace(){
         return getSpace()
+    }
+
+    async createSpaceType({
+        spaceTypeName,
+        description,
+        peopleAllowed,
+        availableSpace
+    }:{
+        spaceTypeName:string,
+        description:string,
+        peopleAllowed:boolean,
+        availableSpace:boolean,
+    }){
+        return createSpaceType(
+            this.requestValidator,
+            this.spaceRepository,
+            spaceTypeName,
+            description,
+            peopleAllowed,
+            availableSpace,
+
+        );
+    }
+
+    async getSpaceType(){
+        return getSpaceType()
+    }
+
+    async updateSpaceType({
+                _id,
+                spaceTypeName,
+                description,
+                peopleAllowed,
+                availableSpace,
+    }:{
+        _id: string,
+    spaceTypeName: string,
+    description: string,            
+    peopleAllowed: boolean,
+    availableSpace: boolean,
+    }){
+        return editSpaceType(
+            this.requestValidator,
+            this.spaceRepository,
+            _id,
+            spaceTypeName,
+            description,
+            peopleAllowed,
+            availableSpace,
+        )
     }
 }

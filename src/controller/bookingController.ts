@@ -1,5 +1,5 @@
-import { Next, Req, Res } from "../infrastructureLayer/types/expressTypes";
-import { BookingUseCase } from "../useCaseLayer/usecases/bookingUseCase";
+import { Next, Req, Res } from "../infrastructure/types/expressTypes";
+import { BookingUseCase } from "../usecase/usecases/bookingUseCase";
 
 export class BookingAdapter {
   private readonly bookingusecase: BookingUseCase;

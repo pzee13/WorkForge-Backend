@@ -1,5 +1,5 @@
-import { Next, Req, Res } from "../infrastructureLayer/types/expressTypes";
-import { UserUseCase } from "../useCaseLayer/usecases/userUseCases";
+import { Next, Req, Res } from "../infrastructure/types/expressTypes";
+import { UserUseCase } from "../usecase/usecases/userUseCases";
 
 export class UserAdapter {
   private readonly userusecase: UserUseCase;

@@ -1,5 +1,5 @@
-import { Next, Req, Res } from "../infrastructureLayer/types/expressTypes";
-import { ProviderUseCase } from "../useCaseLayer/usecases/providerUseCase"; 
+import { Next, Req, Res } from "../infrastructure/types/expressTypes";
+import { ProviderUseCase } from "../usecase/usecases/providerUseCase"; 
 
 export class ProviderAdapter {
     private readonly providerusecase: ProviderUseCase;

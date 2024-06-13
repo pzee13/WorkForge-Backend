@@ -1,5 +1,5 @@
-import { app } from "./infrastructureLayer/configuration/app";
-import connectDB from "./infrastructureLayer/configuration/dataBase";
+import { app } from "./infrastructure/configuration/app";
+import connectDB from "./infrastructure/configuration/dataBase";
 import dotenv from 'dotenv';
 dotenv.config()
 

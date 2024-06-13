@@ -1,5 +1,5 @@
-import { Next, Req, Res } from "../infrastructureLayer/types/expressTypes";
-import { AdminUseCase } from "../useCaseLayer/usecases/adminUseCase";
+import { Next, Req, Res } from "../infrastructure/types/expressTypes";
+import { AdminUseCase } from "../usecase/usecases/adminUseCase";
 
 export class AdminAdapter {
   private readonly adminusecase: AdminUseCase;

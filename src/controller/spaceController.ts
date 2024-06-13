@@ -1,5 +1,5 @@
-import { Next, Req, Res } from "../infrastructureLayer/types/expressTypes";
-import { SpaceUseCase } from "../useCaseLayer/usecases/spaceUseCase";
+import { Next, Req, Res } from "../infrastructure/types/expressTypes";
+import { SpaceUseCase } from "../usecase/usecases/spaceUseCase";
 
 export class SpaceAdapter{
     private readonly spaceusecase:SpaceUseCase;

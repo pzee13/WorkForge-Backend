@@ -26,7 +26,7 @@ export class BookingAdapter {
     try {
       console.log("get booking data before payment ");
       
-      const { spaceId, userId, providerId, bookingDate, moveInTime, moveOutTime, totalPrice } = req.body;
+      const { spaceId, userId, providerId, bookingDate, moveInTime, moveOutTime,noOfSpaces, totalPrice } = req.body;
 
       const booking = await this.bookingusecase.getPreBookings({
         spaceId,
@@ -35,13 +35,14 @@ export class BookingAdapter {
         bookingDate,
         moveInTime,
         moveOutTime,
+        noOfSpaces,
         totalPrice
       });
 
       booking &&
         res.status(booking.status).json({
           success: booking.success,
-          message:booking.message,
+          message:booking.message, 
           data: booking.data,
         });
       console.log(booking);
@@ -67,6 +68,7 @@ export class BookingAdapter {
     try {
   
       const event = req.body;
+      console.log("payment started")
      
       switch (event.type) {
         case "checkout.session.completed":

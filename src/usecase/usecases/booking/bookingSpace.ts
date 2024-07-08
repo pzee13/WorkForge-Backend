@@ -13,13 +13,14 @@ export const bookSpace = async (
   moveInTime: string,
   moveOutTime: string,
   chargePerHour: number,
+  noOfSpaces:number,
   totalPrice: number
 ): Promise<BookingResponse> => {
   try {
     // Validate required parameters
     const validation = requestValidator.validateRequiredFields(
-      { spaceId, userId, providerId, bookingDate, moveInTime, moveOutTime, chargePerHour, totalPrice },
-      [ "spaceId", "userId", "providerId", "bookingDate", "moveInTime", "moveOutTime", "chargePerHour", "totalPrice" ]
+      { spaceId, userId, providerId, bookingDate, moveInTime, moveOutTime, chargePerHour, noOfSpaces,totalPrice },
+      [ "spaceId", "userId", "providerId", "bookingDate", "moveInTime", "moveOutTime", "chargePerHour", "noOfSpaces","totalPrice" ]
     );
 
     if (!validation.success) {
@@ -35,6 +36,7 @@ export const bookSpace = async (
       moveInTime,
       moveOutTime,
       chargePerHour,
+      noOfSpaces,
       totalPrice
     };
 

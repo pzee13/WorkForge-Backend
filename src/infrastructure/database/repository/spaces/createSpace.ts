@@ -10,6 +10,6 @@ export const createSpace = async(
         await space.save()
         return "Successfully created a space";   
     }catch(error){
-        throw error
-    }
-}
+        throw error 
+    } 
+} 

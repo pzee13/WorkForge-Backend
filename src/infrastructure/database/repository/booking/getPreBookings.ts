@@ -8,6 +8,7 @@ export const getPreBookings = async (
   bookingDate: Date,
   moveInTime: string,
   moveOutTime: string,
+  noOfSpaces: number,
   totalPrice: number,
   bookingModel: typeof BookingModel
 ): Promise<BookingResponse> => {
@@ -20,6 +21,7 @@ export const getPreBookings = async (
       bookingDate: bookingDate,
       moveInTime: moveInTime,
       moveOutTime: moveOutTime,
+      noOfSpaces: noOfSpaces,
       totalPrice: totalPrice
     }).sort({ createdAt: -1 }).exec(); // Sort by createdAt in descending order and get the first document
 

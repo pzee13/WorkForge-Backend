@@ -12,6 +12,7 @@ export const paymentStripe = async(
     providerId:string,
 ):Promise<IResponse>=>{
     try{
+        console.log("hai addwauth")
             const res = await stripe.createPaymentIntent(amount,bookingId,providerId)
             if(res){
                 return {

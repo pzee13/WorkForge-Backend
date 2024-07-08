@@ -50,5 +50,11 @@ router.post("/register", (req: Request, res: Response, next: NextFunction) =>
      providerAdapter.getProviders(req,res,next)
 )
 
+router.get(
+  "/mySpaces",
+  (req: Request, res: Response, next: NextFunction) =>
+    spaceAdapter.getSpaces(req,res,next)
+)
+
 
   export default router;

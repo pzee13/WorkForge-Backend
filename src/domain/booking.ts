@@ -10,6 +10,7 @@ export interface Booking {
     moveInTime: string;
     moveOutTime: string;
     chargePerHour: number;
+    noOfSpaces:number;
     totalPrice: number;
     totalPaid?:number;
     paymentId?:string;

@@ -62,4 +62,19 @@ export class SpaceAdapter{
         }
     }
 
+    async getSpaces(req: Req, res: Res, next: Next){
+        try {
+            console.log("get space datas");
+            const spaces = await this.spaceusecase.getSpace();
+            spaces &&
+              res.status(spaces.status).json({
+                success: spaces.success,
+                data: spaces.data,
+              });
+              console.log(spaces);
+          } catch (err) {
+            next(err);
+          }
+    }
+
 }

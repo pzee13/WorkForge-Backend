@@ -13,6 +13,7 @@ const BookingSchema: Schema<Booking & Document> = new Schema(
         moveInTime: { type: String, required: true },
         moveOutTime: { type: String, required: true },
         chargePerHour: { type: Number, required: true },
+        noOfSpaces: {type: Number, required:true },
         totalPrice: { type: Number, required: true },
         totalPaid: { type: Number, default:0 },
         paymentId: { type: String, default:"" },

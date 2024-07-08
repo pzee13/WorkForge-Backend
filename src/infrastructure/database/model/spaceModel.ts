@@ -23,7 +23,7 @@ const SpaceSchema:Schema =new Schema<WorkSpace & Document>(
     //   startService: { type: Date },
     //   endService: { type: Date },
       latitude: {type:Number, required: true},
-      longitude: {type:Number, required: true}
+      longitude: {type:Number, required: true} 
     },
     {
       timestamps: true,

@@ -100,7 +100,7 @@ declare global {
     
         if (token) {
           try {
-            const decoded: any = jwt.verify(token, process.env.JWT_KEY as string);
+            const decoded: any = jwt.verify(token, process.env.JWT_SECRET as string);
             const provider = await providerRepository.findProvider(decoded.email);
             if (provider) {
               req.user = provider;
@@ -111,6 +111,7 @@ declare global {
               res.status(404).send('Provider not found');
             }
           } catch (error) {
+            console.log("hai")
             console.error(error);
             res.status(401).send('Not authorized, no token');
           }

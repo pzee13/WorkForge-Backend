@@ -17,8 +17,8 @@ export class BookingRepositories implements BookingRepository {
     return bookSpace(newBooking, this.bookingModel);
   }
 
-  async  getPreBookings(spaceId: string, userId: string, providerId: string,  bookingDate: Date, moveInTime: string, moveOutTime: string, totalPrice: number): Promise<BookingResponse<string | Booking | Booking[]>> {
-      return getPreBookings(spaceId, userId, providerId,  bookingDate, moveInTime, moveOutTime, totalPrice,this.bookingModel)
+  async  getPreBookings(spaceId: string, userId: string, providerId: string,  bookingDate: Date, moveInTime: string, moveOutTime: string,noOfSpaces:number, totalPrice: number): Promise<BookingResponse<string | Booking | Booking[]>> {
+      return getPreBookings(spaceId, userId, providerId,  bookingDate, moveInTime, moveOutTime,noOfSpaces, totalPrice,this.bookingModel)
   }
 
   async payment(

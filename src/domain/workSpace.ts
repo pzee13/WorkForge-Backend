@@ -13,12 +13,12 @@ export interface WorkSpace{
     images:string[] | null;
     chargePerHour:number;
     availableSpaces:number;
-    isAccepted?:boolean;
-    contactNumber:string;
+    isAccepted?:boolean; 
+    contactNumber:string; 
     facilities:string[]|null;
     rentalAgreement:string;
     // startService:Date;
-    // endService:Date;
+    // endService:Date; 
     latitude:number,
     longitude:number,
 }

@@ -33,8 +33,8 @@ class StripeService implements IStripe {
           },
         ],
         mode: 'payment',
-        success_url: 'http://localhost:3000/home/',
-        cancel_url: 'http://localhost:3000/home/',
+        success_url: 'http://localhost:3000/bookings',
+        cancel_url: 'http://localhost:3000/bookings',
         metadata: { 
           bookingId,
           amount,

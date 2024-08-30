@@ -14,6 +14,7 @@ export const paymentConfirmation = async(
     try{
         console.log("payment booking updated")
         console.log("hai booking")
+        
         await bookingRepository.payment(bookingId,transactionId,amount)
         const adminProfit =Math.round(amount * 5 / 100)
         const providerAmount = amount - adminProfit

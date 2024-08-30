@@ -96,7 +96,41 @@ export class BookingAdapter {
       next(error);
     }
   }
+  
 
+  async getBookings(req: Req, res: Res, next: Next){
+    try {
+        console.log("get space datas");
+        const bookings = await this.bookingusecase.getBookings();
+        bookings &&
+          res.status(bookings.status).json({
+            success: bookings.success,
+            data: bookings.data,
+          });
+          console.log(bookings);
+      } catch (err) {
+        next(err);
+      }
+}
+
+
+
+  async cancelBooking(req: Req, res: Res, next: Next) {
+    try {
+      const { bookingId } = req.body;
+
+      const cancelledBooking = await this.bookingusecase.cancelBooking({ bookingId });
+
+      cancelledBooking &&
+        res.status(cancelledBooking.status).json({
+          success: cancelledBooking.success,
+          message: cancelledBooking.message,
+          data: cancelledBooking.data,
+        });
+    } catch (err) {
+      next(err);
+    }
+  }
 
   
 

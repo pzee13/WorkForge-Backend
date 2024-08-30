@@ -6,7 +6,8 @@ import { findProvider } from "./provider/findProvider";
 import { findProviderById } from "./provider/findProviderById";
 import { updateProviderProfile } from "./provider/updateProviderProfile";
 import { moneyToWallet } from "./provider/moneyToWallet";
-import { blockProvider } from './provider/blockProvider'
+import { blockProvider } from './provider/blockProvider';
+import { updateProviderWallet } from "./provider/updateProviderWallet";
 
 export class ProviderRepository implements IProviderRepository{
     constructor(private readonly providerModel:typeof ProviderModel){}
@@ -34,6 +35,10 @@ export class ProviderRepository implements IProviderRepository{
 
     async blockProvider(_id: string): Promise<string | null> {
       return blockProvider(_id,this.providerModel)
+    }
+
+    async updateProviderWallet(providerId: string, refundAmount: number): Promise<string | null> { // Add method here
+      return updateProviderWallet(providerId,refundAmount,this.providerModel)
     }
   
 }

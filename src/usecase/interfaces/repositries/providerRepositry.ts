@@ -8,5 +8,6 @@ export interface IProviderRepository {
     updateProviderProfile(data:Record<string,string>): Promise<Provider>;
     profitToWallet(providerId: string,providerAmount:number): Promise<string | null>;
     blockProvider(_id:string):Promise<string | null>;
+    updateProviderWallet(userId:string, refundAmount:number): Promise<string | null>;
   }
 

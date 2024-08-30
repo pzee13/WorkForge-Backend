@@ -59,7 +59,7 @@ router.post("/logout",AuthMiddleware.protectUser, (req:Request,res:Response,next
   )
 
 
-router.get("/spaces",
+router.get("/spaces", 
 
 (req:Request,res:Response,next:NextFunction) => 
   userAdapter.getSpaces(req,res,next)
@@ -93,6 +93,25 @@ router.post("/payment", (req: Request, res: Response, next: NextFunction) => {
 router.post("/webhook", (req: Request, res: Response, next: NextFunction) => {
   bookingAdapter.webhook(req, res, next);
 });
+
+
+router.get("/bookings",(req:Request, res: Response, next: NextFunction) => {
+  bookingAdapter.getBookings(req,res,next);
+})
+
+
+router.post("/cancelBooking", AuthMiddleware.protectUser, (req: Request, res: Response, next: NextFunction) => 
+  bookingAdapter.cancelBooking(req, res, next)
+);
+
+
+
+router.get("/getSpaceUser",(req:Request, res: Response, next: NextFunction) => {
+  spaceAdapter.getSpaces(req,res,next);
+})
+
+
+
 
 
 

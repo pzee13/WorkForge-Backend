@@ -115,10 +115,12 @@ import { bookSpace } from "./booking/bookingSpace";
 import { getPreBookings } from "./booking/getPreBookings";
 import { paymentConfirmation } from "./booking/bookingPayment";
 import { getBookings } from "./booking/getBookings";
+import { cancelBooking } from "./booking/cancelBooking";
 
 export class BookingUseCase {
   private readonly bookingRepository: BookingRepository;
   private readonly providerRepository: IProviderRepository;
+  private readonly userRepository: IUserRepository;
   private readonly adminRepository: IAdminRepository;
   private readonly requestValidator: IRequestValidator;
   private readonly stripe: IStripe;
@@ -126,12 +128,14 @@ export class BookingUseCase {
   constructor(
     bookingRepository: BookingRepository,
     providerRepository: IProviderRepository,
+    userRepository: IUserRepository,
     adminRepository: IAdminRepository,
     requestValidator: IRequestValidator,
-    stripe: IStripe
+    stripe: IStripe,
   ) {
     this.bookingRepository = bookingRepository;
     this.providerRepository = providerRepository;
+    this.userRepository = userRepository;
     this.adminRepository = adminRepository;
     this.requestValidator = requestValidator;
     this.stripe = stripe;
@@ -252,6 +256,20 @@ export class BookingUseCase {
 
       async getBookings(){
         return getBookings()
+      }
+
+      async cancelBooking({
+        bookingId,
+      }: {
+        bookingId: string;
+      }) {
+        return cancelBooking(
+          this.requestValidator,
+          this.bookingRepository,
+          this.userRepository,
+          this.providerRepository,
+          bookingId
+        );
       }
 
     }

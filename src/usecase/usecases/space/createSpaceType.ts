@@ -42,7 +42,7 @@ export const createSpaceType = async(
 
         const createNewSpaceType = await spaceRepository.createSpaceType(newSpaceType);
         return createNewSpaceType
-    }else{
+    }else{ 
         throw ErrorResponse.badRequest("Space type alreadhy exist"); 
     }
 

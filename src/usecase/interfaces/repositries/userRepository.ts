@@ -7,5 +7,5 @@ export interface IUserRepository {
     resetPassword(newPassword:IResetPassword): Promise<User>;
     updateProfile(data:Record<string,string>): Promise<User>;
     blockUser(_id:string):Promise<string | null>;
-
-}
+    updateUserWallet(userId:string, refundAmount:number): Promise<string | null>;
+} 

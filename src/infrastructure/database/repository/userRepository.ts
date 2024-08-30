@@ -8,6 +8,7 @@ import { IResetPassword } from "../../../usecase/interfaces/services/response";
 import { resetPassword } from "./user/resetPassword";
 import { updateProfile } from "./user/updateProfile";
 import { blockUser } from "./user/blockUser"
+import { updateUserWallet } from "./user/updateUserWallet";
 
 export class UserRepository implements IUserRepository {
     constructor(private readonly usersModel:typeof UserModel) {}
@@ -30,6 +31,10 @@ async resetPassword(newPassword: IResetPassword): Promise<User> {
 
   async blockUser(_id: string): Promise<string | null> {
     return blockUser(_id,this.usersModel)
+  }
+
+  async updateUserWallet(userId: string, refundAmount: number): Promise<string | null> { // Add method here
+    return updateUserWallet(userId,refundAmount,this.usersModel)
   }
 
 }  

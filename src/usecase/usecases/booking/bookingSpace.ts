@@ -27,6 +27,13 @@ export const bookSpace = async (
       throw ErrorResponse.badRequest(validation.message as string);
     }
 
+    const alreadyBooked = await bookingRepository.isBooked(spaceId, bookingDate, moveInTime, moveOutTime, noOfSpaces);
+
+    console.log("haii",alreadyBooked)
+    if (alreadyBooked) {
+      throw ErrorResponse.badRequest(`Space is already booked during the specified time interval.`);
+    }
+
     // Create the new booking object
     const newBooking = {
       spaceId,

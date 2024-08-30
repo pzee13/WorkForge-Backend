@@ -8,6 +8,7 @@ const userSchema: Schema = new Schema<User & Document>(
     password: { type: String, required: true },
     mobile: { type: String, default: "" },
     isBlocked: { type: Boolean, default: false },
+    wallet: { type: Number, default:0 },
   },
   {
     timestamps: true,
